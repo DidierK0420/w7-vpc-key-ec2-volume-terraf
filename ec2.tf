@@ -17,7 +17,7 @@ resource "aws_instance" "server" {
 
 resource "aws_ebs_volume" "ebs" {
   availability_zone = aws_instance.server.availability_zone
-  size = 20  
+  size              = 20
   tags = {
     Name = "Extra-volume"
   }
@@ -25,6 +25,6 @@ resource "aws_ebs_volume" "ebs" {
 
 resource "aws_volume_attachment" "att" {
   instance_id = aws_instance.server.id
-  volume_id = aws_ebs_volume.ebs.id
-device_name = "/dev/sdb"  
+  volume_id   = aws_ebs_volume.ebs.id
+  device_name = "/dev/sdb"
 }
